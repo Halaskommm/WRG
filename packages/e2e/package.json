@@ -1,0 +1,22 @@
+{
+  "name": "e2e",
+  "private": true,
+  "scripts": {
+    "clean:node": "rimraf node_modules package-lock.json",
+    "pretest": "cd ../.. && npm run prebuild",
+    "test": "jest --watch --coverage=false",
+    "pretest:ci": "npm run pretest",
+    "test:ci": "jest --ci"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "2.1.0",
+    "@types/jest": "26.0.20",
+    "expect-playwright": "0.3.0",
+    "jest": "26.6.3",
+    "jest-playwright-preset": "1.4.3",
+    "playwright": "1.7.1",
+    "rimraf": "3.0.2",
+    "ts-jest": "26.4.4"
+  },
+  "dependencies": {}
+}
