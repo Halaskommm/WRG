@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "clean:node": "rimraf node_modules package-lock.json",
+    "test": "jest --watch --coverage=false --changedSince=origin/master",
+    "test:ci": "jest --ci"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "2.1.0",
+    "@types/jest": "26.0.20",
+    "jest": "26.6.3",
+    "rimraf": "3.0.2",
+    "ts-jest": "26.4.4"
+  },
+  "dependencies": {
+    "@glenstack/cf-workers-router": "1.0.1"
+  }
+}
