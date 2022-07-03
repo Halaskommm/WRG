@@ -1,0 +1,56 @@
+{
+  "name": "script-name",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "prebuild": "lerna run --scope client build",
+    "build": "wrangler build",
+    "clean:node": "rimraf node_modules package-lock.json",
+    "test:client": "CI=true lerna run --scope client test",
+    "test:server": "CI=true lerna run --scope server test",
+    "test:e2e": "CI=true lerna run --scope e2e test:ci",
+    "test": "CI=true lerna run test:ci",
+    "lint": "prettier -c .",
+    "lint:fix": "npm run lint -- --write",
+    "start": "node index.js",
+    "start:client": "CI=true lerna run --scope client --stream start",
+    "start:worker": "wrangler dev",
+    "start:tunnel": "cloudflared tunnel --url localhost:3000 --metrics localhost:8081",
+    "predeploy": "npm run prebuild",
+    "deploy": "wrangler publish --env production",
+    "updatePackages": "node updatePackages.js && npm i"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:GregBrimble/repositoryname.git"
+  },
+  "author": {
+    "name": "Greg Brimble",
+    "email": "developer@gregbrimble.com",
+    "url": "https://gregbrimble.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GregBrimble/repositoryname/issues"
+  },
+  "homepage": "https://github.com/GregBrimble/repositoryname#readme",
+  "devDependencies": {
+    "@cloudflare/wrangler": "1.12.3",
+    "cross-fetch": "3.0.6",
+    "husky": "4.3.7",
+    "lerna": "3.22.1",
+    "npm-check-updates": "10.2.5",
+    "prettier": "2.2.1",
+    "rimraf": "3.0.2",
+    "ts-loader": "8.0.14",
+    "typescript": "4.1.3",
+    "webpack": "5.12.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint || (npm run lint:fix && npm run lint)",
+      "pre-push": "npm test"
+    }
+  }
+}
