@@ -1,0 +1,6 @@
+/packages/client/coverage
+/packages/client/build
+/packages/server/coverage
+/packages/worker/build
+/packages/worker/worker
+/**/package-lock.json
