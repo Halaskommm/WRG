@@ -1,0 +1,20 @@
+{
+  "name": "worker",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "clean": "rimraf build",
+    "clean:node": "rimraf node_modules package-lock.json",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "2.0.0",
+    "rimraf": "3.0.2",
+    "typescript": "3.9.7",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12"
+  },
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "0.0.11"
+  }
+}
